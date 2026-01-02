@@ -5,6 +5,7 @@ import { Avatar } from '@/components/ui/Avatar';
 import { Dropdown, DropdownItem } from '@/components/ui/Dropdown';
 import { useAuth } from '@/hooks/useAuth';
 import { getRoleLabel } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 export interface HeaderProps {
   title?: string;
@@ -12,6 +13,35 @@ export interface HeaderProps {
 
 export function Header({ title }: HeaderProps) {
   const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const getProfilePath = () => {
+    if (!user) return '/profile';
+    
+    const rolePathMap: Record<string, string> = {
+      'super_admin': '/super-admin/profile',
+      'tenant_admin': '/tenant-admin/profile',
+      'teacher': '/teacher/profile',
+      'student': '/student/profile',
+      'parent': '/parent/profile',
+    };
+    
+    return rolePathMap[user.role] || '/profile';
+  };
+
+  const getSettingsPath = () => {
+    if (!user) return '/settings';
+    
+    const rolePathMap: Record<string, string> = {
+      'super_admin': '/super-admin/settings',
+      'tenant_admin': '/tenant-admin/settings',
+      'teacher': '/teacher/profile',
+      'student': '/student/profile',
+      'parent': '/parent/profile',
+    };
+    
+    return rolePathMap[user.role] || '/settings';
+  };
 
   const userMenuItems: DropdownItem[] = [
     {
@@ -19,7 +49,7 @@ export function Header({ title }: HeaderProps) {
       value: 'profile',
       icon: <User className="w-4 h-4" />,
       onClick: () => {
-        // Navigate to profile
+        router.push(getProfilePath());
       },
     },
     {
@@ -27,7 +57,7 @@ export function Header({ title }: HeaderProps) {
       value: 'settings',
       icon: <Settings className="w-4 h-4" />,
       onClick: () => {
-        // Navigate to settings
+        router.push(getSettingsPath());
       },
     },
     {
