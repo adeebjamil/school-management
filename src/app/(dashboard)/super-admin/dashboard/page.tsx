@@ -179,10 +179,3 @@ export default function SuperAdminDashboard() {
     </DashboardLayout>
   );
 }
-            </tbody>
-          </table>
-        </div>
-      </Card>
-    </DashboardLayout>
-  );
-}
