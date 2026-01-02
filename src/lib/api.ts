@@ -34,9 +34,18 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
     
-    // Add tenant ID for tenant-specific requests (but not for public endpoints)
-    if (tenantId && config.headers && !config.url?.includes('super-admin') && !isPublicEndpoint) {
-      config.headers['X-Tenant-ID'] = tenantId;
+    // Add tenant ID for tenant-specific requests (but not for public endpoints or super-admin)
+    if (tenantId && !config.url?.includes('super-admin') && !isPublicEndpoint) {
+      // Add as header
+      if (config.headers) {
+        config.headers['X-Tenant-ID'] = tenantId;
+      }
+      
+      // Also add as query parameter for better compatibility
+      if (!config.params) {
+        config.params = {};
+      }
+      config.params.tenant_id = tenantId;
     }
     
     return config;
