@@ -22,6 +22,7 @@ export default function TenantDetailPage() {
   const [tenant, setTenant] = useState<Tenant | null>(null);
   const [users, setUsers] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingUsers, setLoadingUsers] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -35,12 +36,26 @@ export default function TenantDetailPage() {
       setLoading(true);
       const tenantData = await tenantService.getById(tenantId);
       setTenant(tenantData);
-      // TODO: Load users when backend endpoint is available
-      setUsers([]);
+      
+      // Load tenant users
+      await loadTenantUsers();
     } catch (err: any) {
       setError(err.response?.data?.error || 'Failed to load tenant details');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadTenantUsers = async () => {
+    try {
+      setLoadingUsers(true);
+      const usersData = await tenantService.getUsers(tenantId);
+      setUsers(usersData);
+    } catch (err: any) {
+      console.error('Failed to load tenant users:', err);
+      setUsers([]);
+    } finally {
+      setLoadingUsers(false);
     }
   };
 
@@ -167,7 +182,9 @@ export default function TenantDetailPage() {
           </CardHeader>
 
           <CardContent>
-            {users.length === 0 ? (
+            {loadingUsers ? (
+              <p className="text-center text-gray-500 py-4">Loading users...</p>
+            ) : users.length === 0 ? (
               <p className="text-center text-gray-500 py-4">No users found for this tenant</p>
             ) : (
               <div className="space-y-3">
