@@ -1,9 +1,7 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Switch } from '@/components/ui/switch';
-import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/Card';
+import Button from '@/components/ui/Button';
 import { Bell, Lock, Globe, Database, Mail, Shield } from 'lucide-react';
 
 export default function SettingsPage() {
@@ -11,209 +9,155 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Settings</h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="text-gray-600 mt-1">
           Manage your application preferences and configurations
         </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">
-        <Card>
-          <CardHeader>
-            <div className="flex items-center space-x-2">
-              <Bell className="h-5 w-5" />
-              <CardTitle>Notifications</CardTitle>
-            </div>
-            <CardDescription>Configure notification preferences</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="email-notifications">Email Notifications</Label>
-                <p className="text-sm text-muted-foreground">
-                  Receive notifications via email
-                </p>
+        <Card title="Notifications" subtitle="Configure notification preferences">
+          <div className="space-y-4 p-6">
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Mail className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Email Notifications</p>
+                  <p className="text-sm text-gray-600">Receive notifications via email</p>
+                </div>
               </div>
-              <Switch id="email-notifications" />
+              <div className="text-sm text-gray-500">Coming soon</div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="push-notifications">Push Notifications</Label>
-                <p className="text-sm text-muted-foreground">
-                  Receive browser push notifications
-                </p>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Bell className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Push Notifications</p>
+                  <p className="text-sm text-gray-600">Receive push notifications</p>
+                </div>
               </div>
-              <Switch id="push-notifications" />
+              <div className="text-sm text-gray-500">Coming soon</div>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="tenant-updates">Tenant Updates</Label>
-                <p className="text-sm text-muted-foreground">
-                  Notify when new tenants register
-                </p>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Bell className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Activity Alerts</p>
+                  <p className="text-sm text-gray-600">Get notified about important activities</p>
+                </div>
               </div>
-              <Switch id="tenant-updates" defaultChecked />
+              <div className="text-sm text-gray-500">Coming soon</div>
             </div>
-
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="system-alerts">System Alerts</Label>
-                <p className="text-sm text-muted-foreground">
-                  Critical system notifications
-                </p>
-              </div>
-              <Switch id="system-alerts" defaultChecked />
-            </div>
-          </CardContent>
+          </div>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <div className="flex items-center space-x-2">
-              <Lock className="h-5 w-5" />
-              <CardTitle>Security</CardTitle>
-            </div>
-            <CardDescription>Security and privacy settings</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="two-factor">Two-Factor Authentication</Label>
-                <p className="text-sm text-muted-foreground">
-                  Add an extra layer of security
-                </p>
+        <Card title="Security" subtitle="Manage security settings">
+          <div className="space-y-4 p-6">
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Lock className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Two-Factor Authentication</p>
+                  <p className="text-sm text-gray-600">Add an extra layer of security</p>
+                </div>
               </div>
-              <Switch id="two-factor" />
+              <Button disabled size="sm">Enable</Button>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="session-timeout">Auto Logout</Label>
-                <p className="text-sm text-muted-foreground">
-                  Automatic logout after inactivity
-                </p>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Shield className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Session Management</p>
+                  <p className="text-sm text-gray-600">Manage active sessions</p>
+                </div>
               </div>
-              <Switch id="session-timeout" defaultChecked />
+              <Button disabled size="sm">View</Button>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="audit-logs">Activity Logging</Label>
-                <p className="text-sm text-muted-foreground">
-                  Track all administrative actions
-                </p>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Lock className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Password Policy</p>
+                  <p className="text-sm text-gray-600">Configure password requirements</p>
+                </div>
               </div>
-              <Switch id="audit-logs" defaultChecked />
+              <Button disabled size="sm">Configure</Button>
             </div>
-
-            <div className="pt-2">
-              <Button variant="outline" className="w-full" disabled>
-                <Shield className="mr-2 h-4 w-4" />
-                Change Password
-              </Button>
-            </div>
-          </CardContent>
+          </div>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <div className="flex items-center space-x-2">
-              <Globe className="h-5 w-5" />
-              <CardTitle>System Preferences</CardTitle>
-            </div>
-            <CardDescription>Application settings</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="dark-mode">Dark Mode</Label>
-                <p className="text-sm text-muted-foreground">
-                  Use dark theme
-                </p>
+        <Card title="System" subtitle="System configuration and preferences">
+          <div className="space-y-4 p-6">
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Database className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Database Backup</p>
+                  <p className="text-sm text-gray-600">Schedule automatic backups</p>
+                </div>
               </div>
-              <Switch id="dark-mode" />
+              <Button disabled size="sm">Configure</Button>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="auto-refresh">Auto Refresh</Label>
-                <p className="text-sm text-muted-foreground">
-                  Automatically refresh dashboard data
-                </p>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Globe className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Language & Region</p>
+                  <p className="text-sm text-gray-600">Set language and timezone</p>
+                </div>
               </div>
-              <Switch id="auto-refresh" defaultChecked />
+              <Button disabled size="sm">Change</Button>
             </div>
 
-            <div className="flex items-center justify-between">
-              <div className="space-y-0.5">
-                <Label htmlFor="compact-view">Compact View</Label>
-                <p className="text-sm text-muted-foreground">
-                  Show more data in less space
-                </p>
+            <div className="flex items-center justify-between py-2">
+              <div className="flex items-center space-x-3">
+                <Database className="w-5 h-5 text-gray-500" />
+                <div>
+                  <p className="font-medium">Data Export</p>
+                  <p className="text-sm text-gray-600">Export your data</p>
+                </div>
               </div>
-              <Switch id="compact-view" />
+              <Button disabled size="sm">Export</Button>
             </div>
-          </CardContent>
+          </div>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <div className="flex items-center space-x-2">
-              <Database className="h-5 w-5" />
-              <CardTitle>Data Management</CardTitle>
+        <Card title="Appearance" subtitle="Customize the look and feel">
+          <div className="space-y-4 p-6">
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <p className="font-medium">Theme</p>
+                <p className="text-sm text-gray-600">Select light or dark mode</p>
+              </div>
+              <div className="text-sm text-gray-500">Coming soon</div>
             </div>
-            <CardDescription>Manage application data</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Button variant="outline" className="w-full" disabled>
-                Export All Data
-              </Button>
-              <Button variant="outline" className="w-full" disabled>
-                Import Data
-              </Button>
-              <Button variant="outline" className="w-full" disabled>
-                Clear Cache
-              </Button>
-              <Button variant="destructive" className="w-full" disabled>
-                Delete All Data
-              </Button>
+
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <p className="font-medium">Sidebar Position</p>
+                <p className="text-sm text-gray-600">Left or right sidebar</p>
+              </div>
+              <div className="text-sm text-gray-500">Coming soon</div>
             </div>
-          </CardContent>
+
+            <div className="flex items-center justify-between py-2">
+              <div>
+                <p className="font-medium">Compact Mode</p>
+                <p className="text-sm text-gray-600">Use compact layout</p>
+              </div>
+              <div className="text-sm text-gray-500">Coming soon</div>
+            </div>
+          </div>
         </Card>
       </div>
-
-      <Card>
-        <CardHeader>
-          <div className="flex items-center space-x-2">
-            <Mail className="h-5 w-5" />
-            <CardTitle>Email Configuration</CardTitle>
-          </div>
-          <CardDescription>SMTP and email settings</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="rounded-lg border p-4 text-center">
-            <p className="text-sm text-muted-foreground">
-              Email configuration is managed through environment variables
-            </p>
-            <Button variant="outline" className="mt-4" disabled>
-              Configure Email Settings
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
 
       <div className="flex justify-end space-x-4">
-        <Button variant="outline" disabled>Cancel</Button>
+        <Button variant="outline" disabled>Reset to Defaults</Button>
         <Button disabled>Save Changes</Button>
-      </div>
-
-      <div className="rounded-lg bg-muted p-4">
-        <p className="text-sm text-muted-foreground text-center">
-          <strong>Note:</strong> Settings functionality is currently in development. 
-          Most options will be functional in the next release.
-        </p>
       </div>
     </div>
   );

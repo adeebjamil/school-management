@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/Card';
 import { Brain, Sparkles, TrendingUp, Users } from 'lucide-react';
 
 export default function AIFineTunedPage() {
@@ -9,7 +9,7 @@ export default function AIFineTunedPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">AI Fine-Tuned Analytics</h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-gray-600 mt-1">
             Advanced AI-powered insights for your school management system
           </p>
         </div>
@@ -17,108 +17,87 @@ export default function AIFineTunedPage() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Predictive Analysis
-            </CardTitle>
-            <Brain className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Coming Soon</div>
-            <p className="text-xs text-muted-foreground">
-              AI-powered predictions
-            </p>
-          </CardContent>
+          <div className="flex items-start justify-between p-6">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">Predictive Analysis</p>
+              <p className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</p>
+              <p className="text-xs text-gray-500">AI-powered predictions</p>
+            </div>
+            <div className="p-3 rounded-lg bg-blue-100">
+              <Brain className="w-6 h-6 text-blue-600" />
+            </div>
+          </div>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Smart Insights
-            </CardTitle>
-            <Sparkles className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Coming Soon</div>
-            <p className="text-xs text-muted-foreground">
-              Automated recommendations
-            </p>
-          </CardContent>
+          <div className="flex items-start justify-between p-6">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">Smart Insights</p>
+              <p className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</p>
+              <p className="text-xs text-gray-500">Automated recommendations</p>
+            </div>
+            <div className="p-3 rounded-lg bg-purple-100">
+              <Sparkles className="w-6 h-6 text-purple-600" />
+            </div>
+          </div>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Performance Trends
-            </CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Coming Soon</div>
-            <p className="text-xs text-muted-foreground">
-              Trend analysis
-            </p>
-          </CardContent>
+          <div className="flex items-start justify-between p-6">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">Performance Trends</p>
+              <p className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</p>
+              <p className="text-xs text-gray-500">Trend analysis</p>
+            </div>
+            <div className="p-3 rounded-lg bg-green-100">
+              <TrendingUp className="w-6 h-6 text-green-600" />
+            </div>
+          </div>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">
-              Student Insights
-            </CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">Coming Soon</div>
-            <p className="text-xs text-muted-foreground">
-              Behavioral patterns
-            </p>
-          </CardContent>
+          <div className="flex items-start justify-between p-6">
+            <div>
+              <p className="text-sm text-gray-600 mb-1">Student Insights</p>
+              <p className="text-2xl font-bold text-gray-900 mb-2">Coming Soon</p>
+              <p className="text-xs text-gray-500">Behavioral patterns</p>
+            </div>
+            <div className="p-3 rounded-lg bg-orange-100">
+              <Users className="w-6 h-6 text-orange-600" />
+            </div>
+          </div>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>AI Features</CardTitle>
-          <CardDescription>
-            Advanced artificial intelligence capabilities for school management
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="rounded-lg border p-4">
+      <Card title="AI Features" subtitle="Advanced artificial intelligence capabilities">
+        <div className="space-y-4 p-6">
+          <div className="rounded-lg border border-gray-200 p-4">
             <h3 className="font-semibold mb-2">🎯 Predictive Analytics</h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Forecast student performance, attendance patterns, and resource allocation needs using machine learning models.
             </p>
           </div>
 
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border border-gray-200 p-4">
             <h3 className="font-semibold mb-2">💡 Smart Recommendations</h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Get AI-powered suggestions for teacher assignments, class compositions, and intervention strategies.
             </p>
           </div>
 
-          <div className="rounded-lg border p-4">
+          <div className="rounded-lg border border-gray-200 p-4">
             <h3 className="font-semibold mb-2">📊 Automated Reporting</h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               Generate comprehensive reports with natural language insights and actionable recommendations.
             </p>
           </div>
 
-          <div className="rounded-lg border p-4">
-            <h3 className="font-semibold mb-2">🔍 Anomaly Detection</h3>
-            <p className="text-sm text-muted-foreground">
-              Automatically identify unusual patterns in attendance, grades, or behavior that may require attention.
-            </p>
-          </div>
-
-          <div className="mt-6 rounded-lg bg-muted p-4 text-center">
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-6 rounded-lg bg-gray-100 p-4 text-center">
+            <p className="text-sm text-gray-600">
               AI features are currently in development and will be available in a future release.
             </p>
           </div>
-        </CardContent>
+        </div>
       </Card>
     </div>
   );
