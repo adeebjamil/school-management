@@ -7,10 +7,8 @@ import { Badge } from '@/components/ui/Badge';
 import { superAdminNav } from '@/config/navigation';
 import { Building2, Users, CheckCircle, XCircle, RefreshCw } from 'lucide-react';
 import { tenantService } from '@/services/tenantService';
-import { useToast } from '@/hooks/use-toast';
 
 export default function SuperAdminDashboard() {
-  const { toast } = useToast();
   const [loading, setLoading] = useState(true);
   const [tenants, setTenants] = useState<any[]>([]);
   const [refreshing, setRefreshing] = useState(false);
@@ -31,15 +29,11 @@ export default function SuperAdminDashboard() {
       if (!silent) setLoading(true);
       else setRefreshing(true);
 
-      const data = await tenantService.getTenants();
+      const data = await tenantService.getAll();
       setTenants(data);
     } catch (error: any) {
       if (!silent) {
-        toast({
-          title: 'Error',
-          description: error.response?.data?.error || 'Failed to load dashboard data',
-          variant: 'destructive',
-        });
+        console.error('Failed to load dashboard data:', error);
       }
     } finally {
       setLoading(false);
