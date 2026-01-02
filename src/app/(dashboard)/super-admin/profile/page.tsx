@@ -1,8 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
+import { superAdminNav } from '@/config/navigation';
 import { User, Mail, Building2, Calendar } from 'lucide-react';
 import Cookies from 'js-cookie';
 
@@ -29,19 +31,22 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-gray-600">Loading profile...</p>
+      <DashboardLayout sidebarItems={superAdminNav} title="Profile">
+        <div className="flex items-center justify-center min-h-[400px]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading profile...</p>
+          </div>
         </div>
-      </div>
+      </DashboardLayout>
     );
   }
 
   if (!profile) return null;
 
   return (
-    <div className="space-y-6">
+    <DashboardLayout sidebarItems={superAdminNav} title="Profile">
+      <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Profile</h1>
         <p className="text-gray-600 mt-1">
@@ -142,6 +147,7 @@ export default function ProfilePage() {
           </div>
         </div>
       </Card>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }

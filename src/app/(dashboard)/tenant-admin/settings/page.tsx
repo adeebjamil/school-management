@@ -1,12 +1,15 @@
 'use client';
 
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card } from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
+import { tenantAdminNav } from '@/config/navigation';
 import { Bell, Lock, Globe, Database, Mail, Shield } from 'lucide-react';
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-6">
+    <DashboardLayout sidebarItems={tenantAdminNav} title="Settings">
+      <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold">Settings</h1>
         <p className="text-gray-600 mt-1">
@@ -159,6 +162,7 @@ export default function SettingsPage() {
         <Button variant="outline" disabled>Reset to Defaults</Button>
         <Button disabled>Save Changes</Button>
       </div>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }
